@@ -7,7 +7,7 @@ public class Wound {
     private int roundOfOccurrence;
 
 
-    public Wound(int hitStrength, int hitType, int hitLocalisation, int roundOfOccurrence) {
+    public Wound(int hitLocalisation, int hitType, int hitStrength, int roundOfOccurrence) {
         this.hitStrength = hitStrength;
         this.hitType = hitType;
         this.hitLocalisation = hitLocalisation;
@@ -18,12 +18,9 @@ public class Wound {
         BigData bigData = new BigData();
         int amountOfRounds = currentRound - roundOfOccurrence;
         int bleeding = 0;
-        if (hitStrength < 0) {
-            hitStrength = 0;
-        }
-        if (hitStrength > 9) {
-            hitStrength = 9;
-        }
+        if (hitStrength < 0) hitStrength = 0;
+        if (hitStrength > 9) hitStrength = 9;
+
         if (amountOfRounds > 0 && !lowCondition && !criticalCondition) {
             bleeding = bigData.bleedingArray()[hitType][hitLocalisation][hitStrength] - amountOfRounds / 6;
         } else if (amountOfRounds > 0 && lowCondition && !criticalCondition) {

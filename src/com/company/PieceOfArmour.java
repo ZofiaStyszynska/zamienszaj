@@ -1,28 +1,37 @@
 package com.company;
 
 public class PieceOfArmour {
-    private int catalogueNo;
-    private int[] protection;
+    int catalogueNumber;
+    String name;
+    int[] protByLoc;      //protection of armour by localisation, which is shown in "BigData" class
 
-    public PieceOfArmour(int catalogueNo, int[] protection) {
-        this.catalogueNo = catalogueNo;
-        this.protection = protection;
+    public PieceOfArmour(int catalogueNumber, String name, int[] protByLoc) {
+        this.catalogueNumber = catalogueNumber;
+        this.name = name;
+        this.protByLoc = protByLoc;
     }
 
-    public int getCatalogueNo() {
-        return catalogueNo;
+    public int getCatalogueNumber() {
+        return catalogueNumber;
     }
 
-    public void setCatalogueNo(int catalogueNo) {
-        this.catalogueNo = catalogueNo;
+    public void setCatalogueNumber(int catalogueNumber) {
+        this.catalogueNumber = catalogueNumber;
     }
 
-    public int[] getProtection() {
-        return protection;
+    public String getName() {
+        return name;
     }
 
-    public void setProtection(int[] protection) {
-        this.protection = protection;
+    public void setName(String name) {
+        this.name = name;
     }
 
+    public int[] getProtByLoc() {
+        return protByLoc;
+    }
+
+    public void setProtByLoc(int[] protByLoc) {
+        this.protByLoc = protByLoc;
+    }
 }

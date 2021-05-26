@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Communication {
@@ -35,9 +37,23 @@ public class Communication {
         return scanner.nextInt();
     }
 
+    public static int[] setArmour() {
+        System.out.println("Proszę wybrać zbroję dla tej postaci:");
+        Armour.showCatalogue(Armour.catalogue());
+        System.out.println("Proszę wpisać odpowiedni numer. Po wpisaniu 0 program zakończy dodawanie elementów zbroi");
+        ArrayList<Integer> whichPieces = new ArrayList();
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            int catalogueNo = scanner.nextInt();
+            whichPieces.add(catalogueNo);
+            if (catalogueNo == 0) break;
+        }
+        return Armour.protection(whichPieces, Armour.catalogue());
+    }
+
 
     public static int setHitStrength() {
-        System.out.print("Proszę podać siłe ciosu (S + k6): ");
+        System.out.print("Proszę podać siłe ciosu: ");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
@@ -105,152 +121,124 @@ public class Communication {
 
         System.out.print("Lokalizacja: ");
         Scanner scanner = new Scanner(System.in);
-        String hitLocalisation = scanner.next();
-        hitLocalisation = hitLocalisation.toLowerCase();
-        int hitLocalisationInt;
-        switch (hitLocalisation) {
-            case "głowa":
-            case "glowa":
-            case "łeb":
-                hitLocalisationInt = 0;
-                break;
-            case "twarz":
-            case "gęba":
-            case "ryj":
-            case "pysk":
-            case "morda":
-            case "buzia":
-            case "faciata":
-                hitLocalisationInt = 1;
-                break;
-            case "szyja":
-            case "grdyka":
-            case "kark":
-                hitLocalisationInt = 2;
-                break;
-            case "bark":
-                hitLocalisationInt = 3;
-                break;
-            case "ramię":
-            case "ramie":
-                hitLocalisationInt = 4;
-                break;
-            case "łokieć":
-            case "lokiec":
-                hitLocalisationInt = 5;
-                break;
-            case "przedramię":
-            case "przedramie":
-                hitLocalisationInt = 6;
-                break;
-            case "ręka":
-            case "reka":
-            case "łapa":
-            case "dłoń":
-            case "dlon":
-                hitLocalisationInt = 7;
-                break;
-            case "klatka":
-            case "klata":
-            case "klatka piersiowa":
-            case "plecy":
-            case "k":
-                hitLocalisationInt = 8;
-                break;
-            case "brzuch":
-            case "bebzol":
-            case "lędźwie":
-            case "b":
-                hitLocalisationInt = 9;
-                break;
-            case "biodro":
-                hitLocalisationInt = 10;
-                break;
-            case "udo":
-                hitLocalisationInt = 11;
-                break;
-            case "kolano":
-                hitLocalisationInt = 12;
-                break;
-            case "goleń":
-            case "łydka":
-            case "golen":
-            case "lydka":
-                hitLocalisationInt = 13;
-                break;
-            case "stopa":
-                hitLocalisationInt = 14;
-                break;
-            default:
-                hitLocalisationInt = 15;
+        int hitLocalisationInt = 15;
+        while (hitLocalisationInt == 15) {
+            String hitLocalisation = scanner.next();
+            hitLocalisation = hitLocalisation.toLowerCase();
+            switch (hitLocalisation) {
+                case "głowa":
+                case "glowa":
+                case "łeb":
+                case "0":
+                    hitLocalisationInt = 0;
+                    break;
+                case "twarz":
+                case "gęba":
+                case "ryj":
+                case "pysk":
+                case "morda":
+                case "buzia":
+                case "faciata":
+                case "1":
+                    hitLocalisationInt = 1;
+                    break;
+                case "szyja":
+                case "grdyka":
+                case "kark":
+                case "2":
+                    hitLocalisationInt = 2;
+                    break;
+                case "bark":
+                case "3":
+                    hitLocalisationInt = 3;
+                    break;
+                case "ramię":
+                case "ramie":
+                case "4":
+                    hitLocalisationInt = 4;
+                    break;
+                case "łokieć":
+                case "lokiec":
+                case "5":
+                    hitLocalisationInt = 5;
+                    break;
+                case "przedramię":
+                case "przedramie":
+                case "6":
+                    hitLocalisationInt = 6;
+                    break;
+                case "ręka":
+                case "reka":
+                case "łapa":
+                case "dłoń":
+                case "dlon":
+                case "7":
+                    hitLocalisationInt = 7;
+                    break;
+                case "klatka":
+                case "klata":
+                case "klatka piersiowa":
+                case "plecy":
+                case "k":
+                case "8":
+                    hitLocalisationInt = 8;
+                    break;
+                case "brzuch":
+                case "bebzol":
+                case "lędźwie":
+                case "b":
+                case "9":
+                    hitLocalisationInt = 9;
+                    break;
+                case "biodro":
+                case "10":
+                    hitLocalisationInt = 10;
+                    break;
+                case "udo":
+                case "11":
+                    hitLocalisationInt = 11;
+                    break;
+                case "kolano":
+                case "12":
+                    hitLocalisationInt = 12;
+                    break;
+                case "goleń":
+                case "łydka":
+                case "golen":
+                case "lydka":
+                case "13":
+                    hitLocalisationInt = 13;
+                    break;
+                case "stopa":
+                case "14":
+                    hitLocalisationInt = 14;
+                    break;
+                default:
+                    hitLocalisationInt = 15;
+
+            }
+            if (hitLocalisationInt==15){
+                System.out.println("Wartość " + hitLocalisation + " jest niezrozumiała," +
+                        "program przewiduje 15 lokalizacji:\n" +
+                        "0 głowa\n" +
+                        "1 twarz\n" +
+                        "2 szyja\n" +
+                        "3 bark\n" +
+                        "4 ramię\n" +
+                        "5 łokieć\n" +
+                        "6 przedramię\n" +
+                        "7 ręka\n" +
+                        "8 klatka\n" +
+                        "9 brzuch\n" +
+                        "10 biodro\n" +
+                        "11 udo\n" +
+                        "12 kolano\n" +
+                        "13 goleń\n" +
+                        "14 stopa\n" +
+                        "proszę wpiszać numer lub nazwę lokalizacji bez polskich liter");
+            }
         }
         return hitLocalisationInt;
     }
 
-    public ArmourCatalogue setArmour {
-        System.out.println("Proszę wybrać rodzaj zbroi:");
-        Display.armourTypes;
-        ArmourCatalogue armour = new ArmourCatalogue();
-        Scanner scanner = new Scanner(System.in);
-
-        for (int i = 0; i < 10; i++) {
-            int catalogueNo = scanner.nextInt();
-            int protectionByLoc[] = new int[15];
-            switch (catalogueNo) {
-                case 0:
-                    protectionByLoc[] ={
-                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                } ;  //brak zbroi
-                break;
-                case 1:
-                    protectionByLoc[] ={
-                    3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
-                } ;  //pe�na zbroja p�ytowa
-                break;
-                case 2:
-                    protectionByLoc[] ={
-                    2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
-                } ;  //pe�na zbroja kolcza
-                break;
-                case 3:
-                    protectionByLoc[] ={
-                    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-                } ;  //pe�na zbroja sk�rzana
-                break;
-                case 4:
-                    protectionByLoc[] ={
-                    3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                } ;  //he�m stalowy zamkni�ty
-                break;
-                case 5:
-                    protectionByLoc[] ={
-                    3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                } ;  //he�m stalowy otwarty
-                break;
-                defoult:
-                System.out.println("Niespodziewana wartość");
-                i -= 1;
-            }
-            PieceOfArmour pieceOfArmour = new PieceOfArmour(catalogueNo, protectionByLoc[]);
-            armour.addNewPiece(i, pieceOfArmour);
-            System.out.println("Dodano element zbroi nr: " + catalogueNo + ". Co dalej?");
-
-            Display.setArmourMenu();
-            int whatNow = scanner.nextInt();
-            switch (whatNow) {
-                case 1:
-                    i = 10;
-                    break;
-                case 2:
-                    break;
-                case 3: //Display.addedPieces;
-                    break;
-                case 4:
-                    Display.ArmourList();
-
-            }
-
-        }
-        return armour;
-    }
 }

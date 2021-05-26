@@ -1,5 +1,8 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Character {
     private int number;
     private String name;
@@ -16,6 +19,39 @@ public class Character {
         this.toughness = toughness;
         this.armour = armour;
     }
+
+    public static Character template (int num){
+
+        return (Character) catalogue().get(num-1);
+    }
+
+    public static List catalogue() {
+        List<Character> catalogue = new ArrayList<>();
+        catalogue.add(new Character(1, "Magnar", "m", 80, 4, new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
+        catalogue.add(new Character(1, "Ravandil", "m", 80, 4, new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
+        catalogue.add(new Character(1, "Siegfied", "m", 80, 4, new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
+        catalogue.add(new Character(1, "Ulrich", "m", 80, 4, new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
+        catalogue.add(new Character(1, "Ludmila", "m", 80, 4, new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
+        catalogue.add(new Character(1, "Ursula", "m", 80, 4, new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
+        catalogue.add(new Character(1, "Hans", "m", 80, 4, new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
+        catalogue.add(new Character(1, "ork", "m", 80, 4, new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
+        catalogue.add(new Character(1, "duży ork", "m", 80, 4, new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
+        catalogue.add(new Character(1, "troll", "m", 80, 4, new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
+        catalogue.add(new Character(1, "gigant", "m", 80, 4, new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
+        catalogue.add(new Character(1, "smok", "m", 80, 4, new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
+
+
+        return catalogue;
+    }
+
+    public static void showCatalogue(List<Character> catalogue) {
+        int i = 1;
+        for (Character character : catalogue) {
+            System.out.println(i+". "+character.getName());
+            i++;
+        }
+    }
+
 
 
     public int getNumber() {
@@ -60,6 +96,10 @@ public class Character {
 
     public int[] getArmour() {
         return armour;
+    }
+
+    public int getArmourProt(int loc){
+        return armour[loc];
     }
 
     public void setArmour(int[] armour) {

@@ -278,6 +278,17 @@ public class BigData {
         woundDescription[0][4][9] = "amputacja";
 
 // [][5][]  łokieć - elbow
+        woundDescription[0][5][0] = "nic się nie stało";
+        woundDescription[0][5][1] = "skaleczenie";
+        woundDescription[0][5][2] = "głębokie skaleczenie";
+        woundDescription[0][5][3] = "przecięcie ścięgien, Ref-2";
+        woundDescription[0][5][4] = "uszkodzenie stawu, Ref-3";
+        woundDescription[0][5][5] = "uszkodzenie stawu, kończyna bezwładna";
+        woundDescription[0][5][6] = "uszkodzenie stawu, mięśni, naczyń i nerwów, kończyna bezwładna";
+        woundDescription[0][5][7] = "uszkodzenie stawu, mięśni, naczyń i nerwów, kończyna bezwładna";
+        woundDescription[0][5][8] = "uszkodzenie stawu, mięśni, naczyń i nerwów, kończyna bezwładna";
+        woundDescription[0][5][9] = "amputacja";
+
 
 
 
